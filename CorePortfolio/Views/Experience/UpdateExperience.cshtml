@@ -1,7 +1,6 @@
 ﻿@model EntityLayer.Concreate.Experience
-
 @{
-    ViewData["Title"] = "AddExperience";
+    ViewData["Title"] = "UpdateExperience";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,7 +9,7 @@
 </div>
 @using (Html.BeginForm("UpdateExperience", "Experience", FormMethod.Post))
 {
-  
+    @Html.HiddenFor(x => x.ExperienceID)
     <br />
     @Html.Label("Deneyim Başlığı")
     @Html.TextBoxFor(x => x.Name, new { @class = "form-control"})
@@ -24,6 +23,6 @@
     <label>Açıklama</label>
     @Html.TextAreaFor(x => x.Description, 10, 3, new { @class = "form-control"})
     <br />
-    <button class="btn btn-info">Kaydet</button>
+    <button class="btn btn-outline-success">Güncelle</button>
 }
 
