@@ -42,8 +42,17 @@ namespace CorePortfolio.Controllers
         [HttpGet]
         public IActionResult UpdateSkill(int id)
         {
+            ViewBag.v1 = "Düzenleme";
+            ViewBag.v2 = "Yetenekler";
+            ViewBag.v3 = "Yetenek Güncelleme";
             var values = skillmanager.TGetByID(id);
-            skillmanager.TUpdate(values);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateSkill(Skill skill)
+        {
+            skillmanager.TUpdate(skill);
             return RedirectToAction("Index");
         }
     }
