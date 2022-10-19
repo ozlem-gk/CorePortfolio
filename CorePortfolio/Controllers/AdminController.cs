@@ -26,7 +26,11 @@ namespace CorePortfolio.Controllers
         }
         public PartialViewResult NavigationPartial()
         {
-            return NavigationPartial();
+            return PartialView();
+        }
+        public PartialViewResult NewSideBar()
+        {
+            return PartialView();
         }
     }
 }
