@@ -9,7 +9,7 @@ namespace CorePortfolio.ViewComponents.Dashboard
        
         public IViewComponentResult Invoke()
         {
-           ;
+           
             return View();
         }
     }
