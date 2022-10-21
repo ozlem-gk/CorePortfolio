@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IUserMessageService: IGenericService<UserMessage>
+    public interface IToDoListService : IGenericService<ToDoList>
     {
-        List<UserMessage> GetUserMessageWithUserService();
     }
 }
