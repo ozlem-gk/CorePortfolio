@@ -1,7 +1,12 @@
+using DataAccessLayer.Concreate;
+using EntityLayer.Concreate;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>();
+builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>();
 
 var app = builder.Build();
 

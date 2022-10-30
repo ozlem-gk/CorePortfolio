@@ -23,8 +23,7 @@ namespace CorePortfolio.Areas.Writer.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserRegisterViewModel p)
         {
-            if (ModelState.IsValid)
-            {
+            
                 WriterUser w = new WriterUser()
                 {
                     Name = p.Name,
@@ -47,8 +46,8 @@ namespace CorePortfolio.Areas.Writer.Controllers
                         ModelState.AddModelError("", item.Description);
                     }
                 }
-            }
-            return View();
+            
+            return View(p);
         }
     }
 }
