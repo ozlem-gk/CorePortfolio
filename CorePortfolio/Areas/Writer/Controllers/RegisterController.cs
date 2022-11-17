@@ -33,6 +33,8 @@ namespace CorePortfolio.Areas.Writer.Controllers
                     ImageUrl = p.ImageUrl
 
                 };
+            if (p.ConfirmPassword == p.Password)
+            {
                 var result = await _userManager.CreateAsync(w, p.Password);
 
                 if (result.Succeeded)
@@ -46,6 +48,7 @@ namespace CorePortfolio.Areas.Writer.Controllers
                         ModelState.AddModelError("", item.Description);
                     }
                 }
+            }
             
             return View(p);
         }
