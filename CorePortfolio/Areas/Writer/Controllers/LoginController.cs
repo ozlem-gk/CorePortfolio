@@ -1,10 +1,12 @@
-﻿using EntityLayer.Concreate;
+﻿using CorePortfolio.Areas.Writer.Models;
+using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CorePortfolio.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    
     public class LoginController : Controller
     {
         private readonly SignInManager<WriterUser> _signInManager;
@@ -14,9 +16,28 @@ namespace CorePortfolio.Areas.Writer.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]   
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]  
+        public async Task<IActionResult> Index(UserLoginViewModel p)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(p.UserName, p.Password, true, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Default");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Hatalı Kullanıcı Adı veya şifre");
+                }
+            }
+            return View();  
         }
     }
 }
