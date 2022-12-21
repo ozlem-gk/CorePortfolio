@@ -7,14 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 namespace CorePortfolio.Areas.Writer.Controllers
 {
     [Area("Writer")]
-    [Authorize]
+    //[Authorize]
     public class DefaultController : Controller
     {
-        AnnouncementManager announcement = new AnnouncementManager(new EfAnnouncementDal());
+        AnnouncementManager announcementManager = new AnnouncementManager(new EfAnnouncementDal());
         public IActionResult Index()
         {
-            var values = announcement.TGetList();
+            var values = announcementManager.TGetList();
             return View(values);
+        }
+
+        public IActionResult AnnouncementDetails(int id)
+        {
+            Announcement  announcement = announcementManager.TGetByID(id);
+            return View(announcement);  
         }
     }
 }

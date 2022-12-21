@@ -30,7 +30,7 @@ namespace BusinessLayer.Concreate
 
         public Announcement TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _announcementDal.GetByID(id);    
         }
 
         public List<Announcement> TGetList()
